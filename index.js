@@ -1,5 +1,7 @@
+import { createStore } from 'redux';
+
 // define initial state
-const initialState = { count: 0, more: 'can have more states' }
+const initialState = { count: 0, more: 'can have more properties' }
 
 // define a reducer which has two arguments 'state' and 'action'
 const reducer = (state=initialState, action) => {
@@ -23,5 +25,5 @@ const dec = { type: 'dec' }
 const reset = { type: 'reset' }
 const incBy5 = { type: 'incBy5', value: 5 }
 
-
-
+// create a store that contains our global state
+const store = createStore(reducer);
