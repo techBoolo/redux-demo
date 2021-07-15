@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+const { createStore } = require('redux');
 
 // define initial state
 const initialState = { count: 0, more: 'can have more properties' }
@@ -27,3 +27,21 @@ const incBy5 = { type: 'incBy5', value: 5 }
 
 // create a store that contains our global state
 const store = createStore(reducer);
+
+// run every subscriber functions when any state changes, can be used to update the ui
+store.subscribe(() => {
+  console.log(`count is : ${ store.getState().count }`)
+})
+
+// get the state of our store
+console.log(store.getState());
+// dispatch the action to the store
+store.dispatch(inc);
+store.dispatch(inc);
+store.dispatch(inc);
+store.dispatch(dec);
+store.dispatch(reset);
+store.dispatch(dec);
+store.dispatch(incBy5);
+console.log(store.getState());
+
