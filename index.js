@@ -22,8 +22,14 @@ const reducer = (state=initialState, action) => {
 // actions are objects with 'type' field
 const inc = { type: 'inc' }
 const dec = { type: 'dec' }
-const reset = { type: 'reset' }
-const incBy5 = { type: 'incBy5', value: 5 }
+
+// actions can also be created with action creator function
+const reset = () => { 
+  return {type: 'reset' }
+}
+const incBy5 = () => {
+  return { type: 'incBy5', value: 5 }
+}
 
 // create a store that contains our global state
 const store = createStore(reducer);
@@ -40,8 +46,8 @@ store.dispatch(inc);
 store.dispatch(inc);
 store.dispatch(inc);
 store.dispatch(dec);
-store.dispatch(reset);
+store.dispatch(reset());
 store.dispatch(dec);
-store.dispatch(incBy5);
+store.dispatch(incBy5());
 console.log(store.getState());
 
